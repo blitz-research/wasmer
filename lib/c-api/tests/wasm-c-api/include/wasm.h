@@ -246,7 +246,7 @@ WASM_API_EXTERN const wasm_limits_t* wasm_tabletype_limits(const wasm_tabletype_
 
 WASM_DECLARE_TYPE(memorytype)
 
-WASM_API_EXTERN own wasm_memorytype_t* wasm_memorytype_new(const wasm_limits_t*);
+WASM_API_EXTERN own wasm_memorytype_t* wasm_memorytype_new(const wasm_limits_t*, bool);
 
 WASM_API_EXTERN const wasm_limits_t* wasm_memorytype_limits(const wasm_memorytype_t*);
 

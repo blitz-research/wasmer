@@ -51,7 +51,7 @@ impl wasm_memorytype_t {
 wasm_declare_boxed_vec!(memorytype);
 
 #[no_mangle]
-pub unsafe extern "C" fn wasm_memorytype_new(limits: &wasm_limits_t) -> Box<wasm_memorytype_t> {
+pub unsafe extern "C" fn wasm_memorytype_new(limits: &wasm_limits_t, shared: bool) -> Box<wasm_memorytype_t> {
     let min_pages = Pages(limits.min as _);
     let max_pages = if limits.max == LIMITS_MAX_SENTINEL {
         None
@@ -60,7 +60,7 @@ pub unsafe extern "C" fn wasm_memorytype_new(limits: &wasm_limits_t) -> Box<wasm
     };
 
     Box::new(wasm_memorytype_t::new(MemoryType::new(
-        min_pages, max_pages, false,
+        min_pages, max_pages, shared,
     )))
 }
 
